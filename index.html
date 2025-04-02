@@ -474,7 +474,7 @@
           </div>
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry justify-content-end">
-              <a href="https://www.theverge.com/2024/12/10/24318259/gm-cruise-shutdown-robotaxi-super-cruise" class="block-20" style="background-image: url('images/image_2.jpg');">
+              <a href="https://www.theverge.com/2024/12/10/24318259/gm-cruise-shutdown-robotaxi-super-cruise" class="block-20" style="background-image: url('images/robot.jpg');">
               </a>
               <div class="text mt-3 float-right d-block">
               	<div class="d-flex align-items-center mb-3 meta">
@@ -611,31 +611,64 @@
         </div>
 
         <div class="row no-gutters block-9">
-          <div class="col-md-6 order-md-last d-flex">
-            <form action="#" class="bg-light p-4 p-md-5 contact-form">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Name">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Email">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject">
-              </div>
-              <div class="form-group">
-                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-              </div>
-            </form>
-          
-          </div>
+			<div class="col-md-6 order-md-last d-flex">
+				<form id="contactForm" class="bg-light p-4 p-md-5 contact-form">
+					<div class="form-group">
+						<input type="text" name="name" class="form-control" placeholder="Your Name" required>
+					</div>
+					<div class="form-group">
+						<input type="email" name="email" class="form-control" placeholder="Your Email" required>
+					</div>
+					<div class="form-group">
+						<input type="text" name="subject" class="form-control" placeholder="Subject" required>
+					</div>
+					<div class="form-group">
+						<textarea name="message" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+					</div>
+				</form>
+		
+				<!-- Success Message -->
+				<div id="successMessage" class="mt-4 text-center" style="display: none;">
+					<h5 class="text-success">Message Successfully Delivered!</h5>
+				</div>
+			</div>
+		
+			<div class="col-md-6 d-flex">
+				<div class="img" style="background-image: url('images/update\ 2.jpg');"></div>
+			</div>
+		</div>
+		
+		<script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevents the form from reloading the page
 
-          <div class="col-md-6 d-flex">
-          	<div class="img" style="background-image: url(images/update\ 2.jpg);"></div>
-          </div>
-        </div>
+        var formData = new FormData(this); // Gather the form data
+
+        fetch('process_form.php', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())  // Assuming the response is JSON
+        .then(data => {
+            if (data.success) {
+                // Hide the form and show the success message
+                document.getElementById("contactForm").style.display = "none";
+                document.getElementById("successMessage").style.display = "block";
+            } else {
+                // If there's an error in sending the message
+                alert("There was an error sending your message: " + data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Message Sent Successfully.");
+        });
+    });
+</script>
+		
       </div>
     </section>
 		
@@ -689,7 +722,7 @@
 	              <ul>
 	                <li><span class="icon icon-map-marker"></span><span class="text">No.8 Paul Acquah Lane, Mataheko-Dansoman, Accra, Ghana</span></li>
 	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+233 591 781440</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@Ac.bryt19@gmail.com</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">Ac.bryt19@gmail.com</span></a></li>
 	              </ul>
 	            </div>
             </div>

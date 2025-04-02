@@ -9682,4 +9682,71 @@ textarea.form-control {
     .counter-wrap .text {
       margin: 0 16px; 
     }
+
+    .blog-entry {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .blog-entry:hover {
+      transform: translateY(-5px); /* Slight upward movement */
+      opacity: 0.9;
+  }
+  
+  .blog-entry .block-20 {
+      transition: transform 0.3s ease;
+  }
+  
+  .blog-entry:hover .block-20 {
+      transform: scale(1.1); /* Slight zoom on hover */
+  }
+  
+  .blog-entry .text {
+      transition: color 0.3s ease;
+  }
+  
+  .blog-entry:hover .text {
+      color: #007bff; /* Change text color on hover */
+  }
+    
+    /* Hover effect for footer links */
+.ftco-footer-widget a {
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.ftco-footer-widget a:hover {
+  color: #ff6f61;  /* Change this color to your preferred hover color */
+}
+
+/* Hover effect for social icons */
+.ftco-footer-social a {
+  color: #555;
+  font-size: 20px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.ftco-footer-social a:hover {
+  color: #ff6f61;  /* Change to your desired hover color */
+  transform: scale(1.2);  /* Slight zoom effect on hover */
+}
+
+/* Hover effect for footer contact information */
+.ftco-footer-widget ul li a {
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.ftco-footer-widget ul li a:hover {
+  color: #ff6f61;  /* Change to your desired hover color */
+}
+
+/* Hover effect for the "Have a Questions?" section */
+.ftco-footer-widget .block-23 ul li:hover {
+  background-color: #2C3E50;
+  /* Light background color when hovering over the list items */
+  transition: background-color 0.3s ease;
+}
+
     
