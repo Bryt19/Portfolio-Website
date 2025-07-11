@@ -52,7 +52,7 @@
 	      	<div class="overlay"></div>
 	        <div class="container">
 	          <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-	          	<div class="one-third js-fullheight order-md-last img" style="background-image:url(images/Portfolio\ pic\ 1.jpg);">
+	          	<div class="one-third js-fullheight order-md-last img" style="background-image:url(images/Database\ Present.jpg);">
 	          		<div class="overlay"></div>
 	          	</div>
 		          <div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
@@ -71,7 +71,7 @@
 	      	<div class="overlay"></div>
 	        <div class="container">
 	          <div class="row d-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-	          	<div class="one-third js-fullheight order-md-last img" style="background-image:url(images/3D.jpg);">
+	          	<div class="one-third js-fullheight order-md-last img" style="background-image:url(images/DB\ Preentation\ 16-06-25.jpg);">
 	          		<div class="overlay"></div>
 	          	</div>
 		          <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
@@ -93,7 +93,7 @@
     			<div class="col-md-6 col-lg-5 d-flex">
     				<div class="img-about img d-flex align-items-stretch">
     					<div class="overlay"></div>
-	    				<div class="img d-flex align-self-stretch align-items-center" style="background-image:url(images/update\ 3.jpg);">
+	    				<div class="img d-flex align-self-stretch align-items-center" style="background-image:url(images/Database\ Presentation\ .jpg);">
 	    				</div>
     				</div>
     			</div>
@@ -402,11 +402,11 @@
   				</div>
 
     			<div class="col-md-8">
-    				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/homepage.png);">
+    				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/resume\ project.png);">
     					<div class="overlay"></div>
 	    				<div class="text text-center p-4">
-	    					<a href="https://dhollarsign.tiiny.site/"></a>
-	    					<h2>Experience Website</h2>
+	    					<a href="https://pro-file-builder.vercel.app/"></a>
+	    					<h2>Resume & Cover Letter Generator Website</h2>
 	    				</div>
     				</div>
 
@@ -437,6 +437,28 @@
 			    					<span>Web Design &amp; Development</span>
 			    				</div>
 		    				</div>
+	    				</div>
+    				</div>
+    			</div>
+    		</div>
+
+    		<!-- Additional Project Row -->
+    		<div class="row mt-5">
+    			<div class="col-md-6">
+    				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/To\ do\ List.png);">
+    					<div class="overlay"></div>
+	    				<div class="text text-center p-4">
+	    					<h3><a href="https://bryt19.github.io/To-Do-List/">To Do List </a></h3>
+	    					<span>To Do List website</span>
+	    				</div>
+    				</div>
+    			</div>
+    			<div class="col-md-6">
+    				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/weather.png);">
+    					<div class="overlay"></div>
+	    				<div class="text text-center p-4">
+	    					<h3><a href="https://bryt19.github.io/Weather/">Weather App</a></h3>
+	    					<span>Weather App</span>
 	    				</div>
     				</div>
     			</div>
@@ -614,30 +636,50 @@
 			<div class="col-md-6 order-md-last d-flex">
 				<form id="contactForm" class="bg-light p-4 p-md-5 contact-form">
 					<div class="form-group">
-						<input type="text" name="name" class="form-control" placeholder="Your Name" required>
+						<input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required>
+						<div class="invalid-feedback" id="nameError"></div>
 					</div>
 					<div class="form-group">
-						<input type="email" name="email" class="form-control" placeholder="Your Email" required>
+						<input type="email" name="email" id="email" class="form-control" placeholder="Your Email" required>
+						<div class="invalid-feedback" id="emailError"></div>
 					</div>
 					<div class="form-group">
-						<input type="text" name="subject" class="form-control" placeholder="Subject" required>
+						<input type="text" name="subject" id="subject" class="form-control" placeholder="Subject" required>
+						<div class="invalid-feedback" id="subjectError"></div>
 					</div>
 					<div class="form-group">
-						<textarea name="message" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
+						<textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
+						<div class="invalid-feedback" id="messageError"></div>
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+						<button type="submit" id="submitBtn" class="btn btn-primary py-3 px-5">
+							<span id="submitText">Send Message</span>
+							<span id="submitSpinner" class="spinner-border spinner-border-sm ml-2" style="display: none;"></span>
+						</button>
 					</div>
 				</form>
 		
 				<!-- Success Message -->
 				<div id="successMessage" class="mt-4 text-center" style="display: none;">
-					<h5 class="text-success">Message Successfully Delivered!</h5>
+					<div class="alert alert-success">
+						<i class="icon-check-circle mr-2"></i>
+						<h5 class="mb-0">Message Sent Successfully!</h5>
+						<p class="mb-0 mt-2">Thank you for your message. I'll get back to you soon!</p>
+					</div>
+				</div>
+
+				<!-- Error Message -->
+				<div id="errorMessage" class="mt-4 text-center" style="display: none;">
+					<div class="alert alert-danger">
+						<i class="icon-exclamation-triangle mr-2"></i>
+						<h5 class="mb-0">Error Sending Message</h5>
+						<p id="errorText" class="mb-0 mt-2"></p>
+					</div>
 				</div>
 			</div>
 		
 			<div class="col-md-6 d-flex">
-				<div class="img" style="background-image: url('images/update\ 2.jpg');"></div>
+				<div class="img" style="background-image: url('images/contact.jpg');"></div>
 			</div>
 		</div>
 		
@@ -645,27 +687,154 @@
     document.getElementById("contactForm").addEventListener("submit", function(event) {
         event.preventDefault(); // Prevents the form from reloading the page
 
+        // Reset previous error states
+        resetFormValidation();
+        hideMessages();
+
+        // Get form elements
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+        const subject = document.getElementById("subject");
+        const message = document.getElementById("message");
+        const submitBtn = document.getElementById("submitBtn");
+        const submitText = document.getElementById("submitText");
+        const submitSpinner = document.getElementById("submitSpinner");
+
+        // Validate all fields are filled
+        let isValid = true;
+
+        if (!name.value.trim()) {
+            showFieldError(name, "Name is required");
+            isValid = false;
+        }
+
+        if (!email.value.trim()) {
+            showFieldError(email, "Email is required");
+            isValid = false;
+        } else if (!isValidEmail(email.value)) {
+            showFieldError(email, "Please enter a valid email address");
+            isValid = false;
+        }
+
+        if (!subject.value.trim()) {
+            showFieldError(subject, "Subject is required");
+            isValid = false;
+        }
+
+        if (!message.value.trim()) {
+            showFieldError(message, "Message is required");
+            isValid = false;
+        }
+
+        if (!isValid) {
+            return;
+        }
+
+        // Show loading state
+        submitBtn.disabled = true;
+        submitText.textContent = "Sending...";
+        submitSpinner.style.display = "inline-block";
+
         var formData = new FormData(this); // Gather the form data
 
         fetch('process_form.php', {
             method: 'POST',
             body: formData,
         })
-        .then(response => response.json())  // Assuming the response is JSON
+        .then(response => response.json())
         .then(data => {
             if (data.success) {
                 // Hide the form and show the success message
                 document.getElementById("contactForm").style.display = "none";
                 document.getElementById("successMessage").style.display = "block";
             } else {
-                // If there's an error in sending the message
-                alert("There was an error sending your message: " + data.message);
+                // Show error message
+                showErrorMessage(data.message || "There was an error sending your message.");
             }
         })
         .catch(error => {
             console.error("Error:", error);
-            alert("Message Sent Successfully.");
+            showErrorMessage("Network error. Please try again.");
+        })
+        .finally(() => {
+            // Reset button state
+            submitBtn.disabled = false;
+            submitText.textContent = "Send Message";
+            submitSpinner.style.display = "none";
         });
+    });
+
+    // Helper functions
+    function resetFormValidation() {
+        const fields = ['name', 'email', 'subject', 'message'];
+        fields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            const errorDiv = document.getElementById(fieldId + 'Error');
+            field.classList.remove('is-invalid');
+            errorDiv.textContent = '';
+        });
+    }
+
+    function showFieldError(field, message) {
+        field.classList.add('is-invalid');
+        const errorDiv = document.getElementById(field.id + 'Error');
+        errorDiv.textContent = message;
+    }
+
+    function showErrorMessage(message) {
+        const errorMessage = document.getElementById("errorMessage");
+        const errorText = document.getElementById("errorText");
+        errorText.textContent = message;
+        errorMessage.style.display = "block";
+    }
+
+    function hideMessages() {
+        document.getElementById("successMessage").style.display = "none";
+        document.getElementById("errorMessage").style.display = "none";
+    }
+
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    // Real-time validation
+    document.getElementById("name").addEventListener("blur", function() {
+        if (!this.value.trim()) {
+            showFieldError(this, "Name is required");
+        } else {
+            this.classList.remove('is-invalid');
+            document.getElementById("nameError").textContent = '';
+        }
+    });
+
+    document.getElementById("email").addEventListener("blur", function() {
+        if (!this.value.trim()) {
+            showFieldError(this, "Email is required");
+        } else if (!isValidEmail(this.value)) {
+            showFieldError(this, "Please enter a valid email address");
+        } else {
+            this.classList.remove('is-invalid');
+            document.getElementById("emailError").textContent = '';
+        }
+    });
+
+    document.getElementById("subject").addEventListener("blur", function() {
+        if (!this.value.trim()) {
+            showFieldError(this, "Subject is required");
+        } else {
+            this.classList.remove('is-invalid');
+            document.getElementById("subjectError").textContent = '';
+        }
+    });
+
+    document.getElementById("message").addEventListener("blur", function() {
+        if (!this.value.trim()) {
+            showFieldError(this, "Message is required");
+        } else {
+            this.classList.remove('is-invalid');
+            document.getElementById("messageError").textContent = '';
+        }
     });
 </script>
 		

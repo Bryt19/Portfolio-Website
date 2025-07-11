@@ -1,16 +1,37 @@
 <?php
+header('Content-Type: application/json');
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Sanitize and validate input data
-    $name = htmlspecialchars(trim($_POST['name']));
-    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
-    $subject = htmlspecialchars(trim($_POST['subject']));
-    $message = htmlspecialchars(trim($_POST['message']));
+    $name = htmlspecialchars(trim($_POST['name'] ?? ''));
+    $email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+    $subject = htmlspecialchars(trim($_POST['subject'] ?? ''));
+    $message = htmlspecialchars(trim($_POST['message'] ?? ''));
 
     // Validate input data
-    if (!empty($name) && !empty($email) && !empty($subject) && !empty($message) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        
+    $errors = [];
+
+    if (empty($name)) {
+        $errors[] = "Name is required";
+    }
+
+    if (empty($email)) {
+        $errors[] = "Email is required";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Please enter a valid email address";
+    }
+
+    if (empty($subject)) {
+        $errors[] = "Subject is required";
+    }
+
+    if (empty($message)) {
+        $errors[] = "Message is required";
+    }
+
+    if (empty($errors)) {
         // Recipient email address (replace with your email)
-        $to = 'rojersbrianna5@gmail.com';
+        $to = 'ac.bryt19@gmail.com';
         
         // Email subject
         $email_subject = "New message from: " . $name;
@@ -30,14 +51,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Send the email
         if (mail($to, $email_subject, $email_body, $headers)) {
             // If mail sent successfully, return success response
-            echo json_encode(["success" => true]);
+            echo json_encode([
+                "success" => true,
+                "message" => "Message sent successfully!"
+            ]);
         } else {
             // If email fails to send, return failure response
-            echo json_encode(["success" => false, "message" => "There was an error sending the message."]);
+            echo json_encode([
+                "success" => false, 
+                "message" => "There was an error sending the message. Please try again later."
+            ]);
         }
     } else {
-        // If validation fails, return an error message
-        echo json_encode(["success" => false, "message" => "Please fill in all the fields correctly."]);
+        // If validation fails, return error messages
+        echo json_encode([
+            "success" => false, 
+            "message" => implode(", ", $errors)
+        ]);
     }
+} else {
+    // If not POST request
+    echo json_encode([
+        "success" => false, 
+        "message" => "Invalid request method"
+    ]);
 }
 ?>
