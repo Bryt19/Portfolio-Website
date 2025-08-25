@@ -930,7 +930,7 @@
   <script src="js/main.js"></script>
   
   <script>
-    // Mobile navbar auto-close functionality
+    // Simple mobile navbar auto-close functionality that doesn't interfere with scrolling
     document.addEventListener('DOMContentLoaded', function() {
       // Get all navigation links
       const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
@@ -952,16 +952,16 @@
               navbarToggler.click();
             }
             
-            // Smooth scroll to the target section
+            // Simple scroll to section without interfering with normal scrolling
             const targetSection = document.querySelector(href);
             if (targetSection) {
-              // Add a small delay to ensure navbar closes before scrolling
+              // Use a simple timeout to let navbar close, then scroll naturally
               setTimeout(() => {
                 targetSection.scrollIntoView({
                   behavior: 'smooth',
                   block: 'start'
                 });
-              }, 300);
+              }, 200);
             }
           }
         });
