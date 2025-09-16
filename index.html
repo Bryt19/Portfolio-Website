@@ -158,6 +158,96 @@
         }
       }
       
+      /* Smooth Scroll Navigation Button Styles */
+      .scroll-navigation {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+      
+      .scroll-navigation.show {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      
+      .scroll-btn {
+        width: 50px;
+        height: 50px;
+        border: none;
+        border-radius: 50%;
+        background: #F96D00;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(249, 109, 0, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .scroll-btn:hover {
+        background: #e85d00;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(249, 109, 0, 0.4);
+      }
+      
+      .scroll-btn:active {
+        transform: translateY(0);
+      }
+      
+      .scroll-btn i {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      
+      /* Mobile responsiveness */
+      @media (max-width: 768px) {
+        .scroll-navigation {
+          right: 15px;
+          bottom: 15px;
+          gap: 8px;
+        }
+        
+        .scroll-btn {
+          width: 45px;
+          height: 45px;
+          font-size: 16px;
+        }
+        
+        .scroll-btn i {
+          font-size: 14px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .scroll-navigation {
+          right: 10px;
+          bottom: 10px;
+        }
+        
+        .scroll-btn {
+          width: 40px;
+          height: 40px;
+          font-size: 14px;
+        }
+        
+        .scroll-btn i {
+          font-size: 12px;
+        }
+      }
+      
       /* Counter/Statistics optimization for small screens */
       @media (max-width: 768px) {
         /* Main counter section */
@@ -1268,6 +1358,16 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
+  <!-- Smooth Scroll Navigation Button -->
+  <div id="scrollNav" class="scroll-navigation">
+    <button id="scrollUp" class="scroll-btn scroll-up" title="Scroll to Top">
+      <i class="icon-arrow-up"></i>
+    </button>
+    <button id="scrollDown" class="scroll-btn scroll-down" title="Scroll to Bottom">
+      <i class="icon-arrow-down"></i>
+    </button>
+  </div>
+
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -1321,6 +1421,115 @@
           }
         });
       });
+    });
+  </script>
+  
+  <script>
+    // Smooth Scroll Navigation Button Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollNav = document.getElementById('scrollNav');
+      const scrollUpBtn = document.getElementById('scrollUp');
+      const scrollDownBtn = document.getElementById('scrollDown');
+      let inactivityTimer;
+      let isScrolling = false;
+      
+      // Show/hide navigation based on scroll position
+      function toggleScrollNav() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        
+        // Show navigation if scrolled down more than 100px
+        if (scrollTop > 100) {
+          scrollNav.classList.add('show');
+          resetInactivityTimer();
+        } else {
+          scrollNav.classList.remove('show');
+        }
+        
+        // Update button states based on scroll position
+        if (scrollTop < 50) {
+          scrollUpBtn.style.opacity = '0.5';
+          scrollUpBtn.style.pointerEvents = 'none';
+        } else {
+          scrollUpBtn.style.opacity = '1';
+          scrollUpBtn.style.pointerEvents = 'auto';
+        }
+        
+        if (scrollTop + windowHeight >= documentHeight - 50) {
+          scrollDownBtn.style.opacity = '0.5';
+          scrollDownBtn.style.pointerEvents = 'none';
+        } else {
+          scrollDownBtn.style.opacity = '1';
+          scrollDownBtn.style.pointerEvents = 'auto';
+        }
+      }
+      
+      // Reset inactivity timer
+      function resetInactivityTimer() {
+        clearTimeout(inactivityTimer);
+        inactivityTimer = setTimeout(() => {
+          if (!isScrolling) {
+            scrollNav.classList.remove('show');
+          }
+        }, 3000); // Hide after 3 seconds of inactivity
+      }
+      
+      // Scroll to top function
+      function scrollToTop() {
+        isScrolling = true;
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+        setTimeout(() => {
+          isScrolling = false;
+        }, 1000);
+      }
+      
+      // Scroll to bottom function
+      function scrollToBottom() {
+        isScrolling = true;
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: 'smooth'
+        });
+        setTimeout(() => {
+          isScrolling = false;
+        }, 1000);
+      }
+      
+      // Event listeners
+      window.addEventListener('scroll', function() {
+        toggleScrollNav();
+        isScrolling = true;
+        clearTimeout(inactivityTimer);
+        setTimeout(() => {
+          isScrolling = false;
+        }, 150);
+      });
+      
+      scrollUpBtn.addEventListener('click', scrollToTop);
+      scrollDownBtn.addEventListener('click', scrollToBottom);
+      
+      // Show navigation on mouse movement (for desktop)
+      document.addEventListener('mousemove', function() {
+        if (window.pageYOffset > 100) {
+          scrollNav.classList.add('show');
+          resetInactivityTimer();
+        }
+      });
+      
+      // Touch events for mobile
+      document.addEventListener('touchstart', function() {
+        if (window.pageYOffset > 100) {
+          scrollNav.classList.add('show');
+          resetInactivityTimer();
+        }
+      });
+      
+      // Initialize
+      toggleScrollNav();
     });
   </script>
     
