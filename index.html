@@ -21,6 +21,298 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+      /* Hero section optimization for small screens */
+      @media (max-width: 768px) {
+        .hero {
+          min-height: 100vh;
+          padding: 2rem 0;
+        }
+        
+        .hero .slider-item {
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+        }
+        
+        .hero .slider-item .img {
+          min-height: 40vh !important;
+          background-size: cover !important;
+          background-position: center center !important;
+          background-repeat: no-repeat !important;
+          order: 1;
+        }
+        
+        .hero .slider-item .one-third {
+          width: 100% !important;
+          order: 1 !important;
+        }
+        
+        .hero .slider-item .one-forth {
+          width: 100% !important;
+          order: 2 !important;
+          padding: 2rem 1rem !important;
+          text-align: center !important;
+          background: rgba(0, 0, 0, 0.7);
+          margin-top: -2rem;
+          position: relative;
+          z-index: 2;
+        }
+        
+        .hero .slider-item .text h1 {
+          font-size: 2.2rem !important;
+          line-height: 1.2 !important;
+          margin-bottom: 1rem !important;
+          color: white !important;
+        }
+        
+        .hero .slider-item .text h2 {
+          font-size: 1.3rem !important;
+          line-height: 1.4 !important;
+          margin-bottom: 1.5rem !important;
+          color: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        .hero .slider-item .text .subheading {
+          font-size: 1rem !important;
+          color: #F96D00 !important;
+          font-weight: 500 !important;
+          margin-bottom: 0.5rem !important;
+        }
+        
+        .hero .slider-item .text .btn {
+          margin: 0.5rem !important;
+          padding: 0.8rem 2rem !important;
+          font-size: 0.95rem !important;
+          border-radius: 25px !important;
+          font-weight: 600 !important;
+          display: inline-block !important;
+          min-width: 140px !important;
+        }
+        
+        .hero .slider-item .text .btn-primary {
+          background: #F96D00 !important;
+          border-color: #F96D00 !important;
+          color: white !important;
+        }
+        
+        .hero .slider-item .text .btn-outline-white {
+          border: 2px solid white !important;
+          color: white !important;
+          background: transparent !important;
+        }
+        
+        .hero .slider-item .text .btn-outline-white:hover {
+          background: white !important;
+          color: #333 !important;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .hero {
+          min-height: 100vh;
+          padding: 1rem 0;
+        }
+        
+        .hero .slider-item .img {
+          min-height: 35vh !important;
+        }
+        
+        .hero .slider-item .one-forth {
+          padding: 1.5rem 0.5rem !important;
+          margin-top: -1.5rem;
+        }
+        
+        .hero .slider-item .text h1 {
+          font-size: 1.8rem !important;
+          line-height: 1.1 !important;
+        }
+        
+        .hero .slider-item .text h2 {
+          font-size: 1.1rem !important;
+          line-height: 1.3 !important;
+        }
+        
+        .hero .slider-item .text .btn {
+          padding: 0.7rem 1.5rem !important;
+          font-size: 0.9rem !important;
+          margin: 0.3rem !important;
+          min-width: 120px !important;
+        }
+      }
+      
+      @media (max-width: 360px) {
+        .hero .slider-item .text h1 {
+          font-size: 1.6rem !important;
+        }
+        
+        .hero .slider-item .text h2 {
+          font-size: 1rem !important;
+        }
+        
+        .hero .slider-item .text .btn {
+          padding: 0.6rem 1.2rem !important;
+          font-size: 0.85rem !important;
+          min-width: 100px !important;
+        }
+      }
+      
+      /* Counter/Statistics optimization for small screens */
+      @media (max-width: 768px) {
+        /* Main counter section */
+        .ftco-counter .block-18 {
+          margin-bottom: 2rem;
+        }
+        
+        .ftco-counter .block-18 .text {
+          padding: 1.5rem 1rem;
+        }
+        
+        .ftco-counter .number {
+          font-size: 2.5rem !important;
+          font-weight: 700 !important;
+          line-height: 1.2 !important;
+          display: block !important;
+          margin-bottom: 0.5rem !important;
+        }
+        
+        .ftco-counter span {
+          font-size: 1rem !important;
+          font-weight: 500 !important;
+          color: rgba(255, 255, 255, 0.8) !important;
+          display: block !important;
+          text-align: center !important;
+        }
+        
+        .ftco-counter .row {
+          margin: 0 -10px;
+          justify-content: center !important;
+        }
+        
+        .ftco-counter .col-md {
+          padding: 0 10px;
+          margin-bottom: 1rem;
+          display: flex !important;
+          justify-content: center !important;
+        }
+        
+        /* About section counters */
+        .counter-wrap {
+          flex-direction: column !important;
+          align-items: center !important;
+          text-align: center !important;
+          justify-content: center !important;
+          width: 100% !important;
+        }
+        
+        .counter-wrap .text {
+          margin-bottom: 1.5rem !important;
+          padding: 0.5rem !important;
+          text-align: center !important;
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+        }
+        
+        .counter-wrap .number {
+          font-size: 2rem !important;
+          font-weight: 700 !important;
+          display: block !important;
+          margin-bottom: 0.3rem !important;
+          color: #F96D00 !important;
+          text-align: center !important;
+        }
+        
+        .counter-wrap span {
+          font-size: 0.9rem !important;
+          font-weight: 500 !important;
+          color: #666 !important;
+          display: block !important;
+          text-align: center !important;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        /* Main counter section */
+        .ftco-counter .number {
+          font-size: 2rem !important;
+        }
+        
+        .ftco-counter span {
+          font-size: 0.9rem !important;
+        }
+        
+        .ftco-counter .block-18 .text {
+          padding: 1rem 0.5rem;
+        }
+        
+        .ftco-counter .col-md {
+          flex: 0 0 50%;
+          max-width: 50%;
+          display: flex !important;
+          justify-content: center !important;
+        }
+        
+        /* About section counters */
+        .counter-wrap .number {
+          font-size: 1.8rem !important;
+        }
+        
+        .counter-wrap span {
+          font-size: 0.8rem !important;
+        }
+        
+        .counter-wrap .text {
+          margin-bottom: 1rem !important;
+        }
+      }
+      
+      @media (max-width: 360px) {
+        /* Main counter section */
+        .ftco-counter .col-md {
+          flex: 0 0 100%;
+          max-width: 100%;
+          display: flex !important;
+          justify-content: center !important;
+        }
+        
+        .ftco-counter .number {
+          font-size: 1.8rem !important;
+        }
+        
+        /* About section counters */
+        .counter-wrap .number {
+          font-size: 1.5rem !important;
+        }
+        
+        .counter-wrap span {
+          font-size: 0.75rem !important;
+        }
+      }
+      
+      /* Ensure counter section is responsive */
+      .ftco-counter {
+        padding: 3rem 0;
+      }
+      
+      @media (max-width: 768px) {
+        .ftco-counter {
+          padding: 2rem 0;
+        }
+      }
+      
+      /* About section counter wrapper */
+      .counter-wrap {
+        margin-top: 2rem;
+      }
+      
+      @media (max-width: 768px) {
+        .counter-wrap {
+          margin-top: 1.5rem;
+        }
+      }
+    </style>
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	  
@@ -118,24 +410,23 @@
 				<div class="counter-wrap ftco-animate d-flex justify-content-between mt-md-3">
 					<div class="text">
 					  <p class="mb-4">
-						<span class="number" data-number="29">0</span>
+						<span class="number" data-number="34">0</span>
 						<span>Projects Complete</span>
 					  </p>
 					</div>
 					<div class="text">
 					  <p class="mb-4">
-						<span class="number" data-number="256">0</span>
+						<span class="number" data-number="436">0</span>
 						<span>Hours Of Support</span>
 					  </p>
 					</div>
 					<div class="text">
 					  <p class="mb-4">
-						<span class="number" data-number="21">0</span>
+						<span class="number" data-number="37">0</span>
 						<span>Happy Clients</span>
 					  </p>
 					</div>
 				  </div>
-				  
 	        </div>
         </div>
     	</div>
@@ -298,7 +589,7 @@
           <div class="col-md-12 heading-section text-center ftco-animate">
           	<h1 class="big big-2">Skills</h1>
             <h2 class="mb-4">My Skills</h2>
-            <p>I have expertise in HTML, CSS, JavaScript, and Bootstrap. I create responsive, user-friendly websites with great attention to detail. Below are the services I offer.</p>
+            <p>I have expertise in HTML, CSS, JavaScript, React, TypeScript, and Bootstrap. I create responsive, user-friendly websites with great attention to detail. Below are the services I offer.</p>
           </div>
         </div>
 				<div class="row">
@@ -348,10 +639,54 @@
 					</div>
 					<div class="col-md-6 animate-box">
 						<div class="progress-wrap ftco-animate">
+							<h3>React</h3>
+							<div class="progress">
+							 	<div class="progress-bar color-7" role="progressbar" aria-valuenow="80"
+							  	aria-valuemin="0" aria-valuemax="100" style="width:80%">
+							    <span>80%</span>
+							  	</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 animate-box">
+						<div class="progress-wrap ftco-animate">
+							<h3>TypeScript</h3>
+							<div class="progress">
+							 	<div class="progress-bar color-8" role="progressbar" aria-valuenow="75"
+							  	aria-valuemin="0" aria-valuemax="100" style="width:75%">
+							    <span>75%</span>
+							  	</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 animate-box">
+						<div class="progress-wrap ftco-animate">
+							<h3>Tailwind CSS</h3>
+							<div class="progress">
+							 	<div class="progress-bar color-3" role="progressbar" aria-valuenow="85"
+							  	aria-valuemin="0" aria-valuemax="100" style="width:85%">
+							    <span>85%</span>
+							  	</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 animate-box">
+						<div class="progress-wrap ftco-animate">
+							<h3>Vite</h3>
+							<div class="progress">
+							 	<div class="progress-bar color-4" role="progressbar" aria-valuenow="75"
+							  	aria-valuemin="0" aria-valuemax="100" style="width:75%">
+							    <span>75%</span>
+							  	</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 animate-box">
+						<div class="progress-wrap ftco-animate">
 							<h3>Graphic Design</h3>
 							<div class="progress">
-							 	<div class="progress-bar color-5" role="progressbar" aria-valuenow="79"
-							  	aria-valuemin="0" aria-valuemax="100" style="width:75%">
+							 	<div class="progress-bar color-5" role="progressbar" aria-valuenow="77"
+							  	aria-valuemin="0" aria-valuemax="100" style="width:77%">
 							    <span>77%</span>
 							  	</div>
 							</div>
@@ -463,6 +798,26 @@
     				</div>
     			</div>
     		</div>
+    		<div class="row mt-4">
+    			<div class="col-md-6">
+    				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/LeapBod.png);">
+    					<div class="overlay"></div>
+	    				<div class="text text-center p-4">
+	    					<h3><a href="https://leapbod.vercel.app/">Leapbod</a></h3>
+	    					<span>Leapbod</span>
+	    				</div>
+    				</div>
+    			</div>
+    			<div class="col-md-6">
+    				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/TradeLens.png);">
+    					<div class="overlay"></div>
+	    				<div class="text text-center p-4">
+	    					<h3><a href="https://trade-lens-finance.vercel.app/">TradeLens</a></h3>
+	    					<span>TradeLens</span>
+	    				</div>
+    				</div>
+    			</div>
+    		</div>
     	</div>
     </section>
 
@@ -484,7 +839,7 @@
               <div class="text mt-3 float-right d-block">
               	<div class="d-flex align-items-center mb-3 meta">
 	                <p class="mb-0">
-	                	<span class="mr-2">December 11, 2024</span>
+	                	<span class="mr-2">September 11, 2024</span>
 	                	<a href="https://techcrunch.com/2024/12/11/kast-stablecoin-neobank-hongshan-peak-xv/" class="mr-2">Admin</a>
 	                	<a href="https://techcrunch.com/2024/12/11/kast-stablecoin-neobank-hongshan-peak-xv/" class="meta-chat"><span class="icon-chat"></span> 3</a>
 	                </p>
@@ -501,7 +856,7 @@
               <div class="text mt-3 float-right d-block">
               	<div class="d-flex align-items-center mb-3 meta">
 	                <p class="mb-0">
-	                	<span class="mr-2">December 10, 2024</span>
+	                	<span class="mr-2">August 10, 2025</span>
 	                	<a href="https://www.theverge.com/2024/12/10/24318259/gm-cruise-shutdown-robotaxi-super-cruise" class="mr-2">Admin</a>
 	                	<a href="https://www.theverge.com/2024/12/10/24318259/gm-cruise-shutdown-robotaxi-super-cruise" class="meta-chat"><span class="icon-chat"></span> 2</a>
 	                </p>
@@ -518,7 +873,7 @@
               <div class="text mt-3 float-right d-block">
               	<div class="d-flex align-items-center mb-3 meta">
 	                <p class="mb-0">
-	                	<span class="mr-2">January 5, 2025</span>
+	                	<span class="mr-2">September 5, 2025</span>
 	                	<a href="https://idratherbewriting.com/blog/trends-predictions-2025-tech-comm" class="mr-2">Admin</a>
 	                	<a href="https://idratherbewriting.com/blog/trends-predictions-2025-tech-comm" class="meta-chat"><span class="icon-chat"></span> 7</a>
 	                </p>
@@ -538,7 +893,7 @@
           <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
             <div class="block-18">
               <div class="text">
-                <strong class="number" data-number="7">0</strong>
+                <strong class="number" data-number="8">0</strong>
                 <span>Certificates</span>
               </div>
             </div>
@@ -546,7 +901,7 @@
           <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
             <div class="block-18">
               <div class="text">
-                <strong class="number" data-number="23">0</strong>
+                <strong class="number" data-number="34">0</strong>
                 <span>Complete Projects</span>
               </div>
             </div>
@@ -554,7 +909,7 @@
           <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
             <div class="block-18">
               <div class="text">
-                <strong class="number" data-number="14">0</strong>
+                <strong class="number" data-number="37">0</strong>
                 <span>Happy Customers</span>
               </div>
             </div>
@@ -562,7 +917,7 @@
           <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
             <div class="block-18">
               <div class="text">
-                <strong class="number" data-number="32">0</strong>
+                <strong class="number" data-number="436">0</strong>
                 <span>Cups of coffee</span>
               </div>
             </div>
